@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wml><AppClass id="mysql"><appname>数据库服务器</appname></AppClass><AppClass id="win2003"><appname>WINDOWS2003服务器</appname></AppClass><AppClass id="updateserver"><appname>更新服务器</appname></AppClass></wml>

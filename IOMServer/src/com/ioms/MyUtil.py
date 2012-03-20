@@ -15,7 +15,7 @@ import ServerInfo
 import sitecustomize
 
 def version(cmds,cmd):
-    """MyUtil_version : 1.5_2012-03-12_Release
+    """MyUtil_version : 1.51_2012-03-20_Release
     """
     return version.__doc__
 
@@ -120,9 +120,14 @@ def SecretKey():
     """定义secret_key加密字串
     """
     global secret_key
+    sys = ServerInfo.getSYSTEM()
+    if  sys == "Windows":
+        IFS = "\\"
+    else:
+        IFS = "/"
     try:
         cf = ConfigParser.ConfigParser()
-        cf.read(cur_file_dir()+"\\key.ini")
+        cf.read(cur_file_dir()+IFS+"key.ini")
         key = cf.get("main", "key")
         secret_key = binascii.b2a_base64(key)
         #如果读不到KEY，则强制指定一个KEY，但必须所有程序的配置 都一样，否则会出错无法通讯
@@ -334,7 +339,7 @@ def UnZIP(zfile, path):
         return '-1',str(sys.exc_info()[0])+str(sys.exc_info()[1])
     
 def makeMD5(path1):
-    """本模块临时使用，用于生成配置文件中所有文件的MD5
+    """本模块用于生成config.ini配置文件中所有文件的MD5
     print makeMD5("e:\\agent\\")
     """
     filelist = os.listdir(path1)
